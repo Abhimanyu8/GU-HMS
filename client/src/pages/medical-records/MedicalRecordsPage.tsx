@@ -180,7 +180,7 @@ export default function MedicalRecordsPage({ patientId }: MedicalRecordsPageProp
                 <SelectValue placeholder={t('records.filterByPatient')} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">{t('common.all')}</SelectItem>
+                <SelectItem value="all">{t('common.all')}</SelectItem>
                 {patientsData?.users.map((patient) => (
                   <SelectItem key={patient.id} value={patient.id.toString()}>
                     {patient.fullName}

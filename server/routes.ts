@@ -511,6 +511,52 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Medical Records routes
+  app.get("/api/medical-records", authenticate, async (req, res) => {
+    try {
+      const { patientId } = req.query;
+      const { currentUser } = req.body;
+      
+      let records = [];
+      
+      if (patientId) {
+        const patientIdNum = Number(patientId);
+        
+        // Check if the user is the patient or a doctor when requesting specific patient records
+        if (currentUser.id !== patientIdNum && currentUser.role !== 'doctor') {
+          return res.status(403).json({ message: "Access denied" });
+        }
+        
+        records = await storage.getMedicalRecordsByPatient(patientIdNum);
+      } else {
+        // For non-specific requests, only doctors can see all records
+        if (currentUser.role !== 'doctor') {
+          return res.status(403).json({ message: "Access denied" });
+        }
+        
+        // Get all records from all patients
+        // This is just a simple implementation; in a real app, you might want pagination
+        const patients = await storage.getUsers('patient');
+        records = [];
+        
+        for (const patient of patients) {
+          const patientRecords = await storage.getMedicalRecordsByPatient(patient.id);
+          records = [...records, ...patientRecords];
+        }
+      }
+      
+      // Enhance records with patient details
+      const enhancedRecords = await Promise.all(records.map(async (record) => {
+        const patient = await storage.getUser(record.patientId);
+        return { ...record, patient };
+      }));
+      
+      res.json({ records: enhancedRecords });
+    } catch (error) {
+      console.error("Get medical records error:", error);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  });
+  
   app.get("/api/patients/:patientId/medical-records", authenticate, async (req, res) => {
     try {
       const patientId = Number(req.params.patientId);
