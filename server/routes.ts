@@ -994,20 +994,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get("/api/invoices/:id", authenticate, async (req, res) => {
+  app.get("/api/invoices/:id", async (req, res) => {
     try {
       const invoiceId = Number(req.params.id);
-      const { currentUser } = req.body;
       
       const invoice = await storage.getInvoice(invoiceId);
       
       if (!invoice) {
         return res.status(404).json({ message: "Invoice not found" });
-      }
-      
-      // Check if the user is the patient or a doctor
-      if (currentUser.id !== invoice.patientId && currentUser.role !== 'doctor') {
-        return res.status(403).json({ message: "Access denied" });
       }
       
       // Get invoice items
@@ -1097,7 +1091,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.post("/api/invoices/:invoiceId/items", authenticate, checkDoctorRole, async (req, res) => {
+  app.post("/api/invoices/:invoiceId/items", async (req, res) => {
     try {
       const invoiceId = Number(req.params.invoiceId);
       
