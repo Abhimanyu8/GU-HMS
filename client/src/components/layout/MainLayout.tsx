@@ -3,6 +3,7 @@ import { useLocation } from 'wouter';
 import { useTranslation } from 'react-i18next';
 import Sidebar from '@/components/layout/Sidebar';
 import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 import { useAuth } from '@/context/AuthContext';
 import { useMobile } from '@/hooks/use-mobile';
 
@@ -66,6 +67,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
         <main className="flex-1 p-4 md:p-6 overflow-auto">
           {children}
         </main>
+        <Footer />
       </div>
     </div>
   );
