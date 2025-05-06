@@ -62,65 +62,65 @@ export default function QuickAccess({ className }: QuickAccessProps) {
       <CardContent className="p-4">
         <div className="grid grid-cols-2 gap-4">
           <Link href="/appointments/new">
-            <a className="bg-neutral-100 p-4 rounded-lg text-center hover:bg-neutral-200 transition block">
+            <div className="bg-neutral-100 p-4 rounded-lg text-center hover:bg-neutral-200 transition block cursor-pointer">
               <div className="bg-primary bg-opacity-20 h-12 w-12 rounded-full flex items-center justify-center mx-auto mb-2">
                 <CalendarPlus className="text-primary" />
               </div>
               <span className="text-sm font-medium">{t('dashboard.newAppointment')}</span>
-            </a>
+            </div>
           </Link>
           
           {user?.role === UserRole.DOCTOR && (
             <Link href="/patients/new">
-              <a className="bg-neutral-100 p-4 rounded-lg text-center hover:bg-neutral-200 transition block">
+              <div className="bg-neutral-100 p-4 rounded-lg text-center hover:bg-neutral-200 transition block cursor-pointer">
                 <div className="bg-secondary bg-opacity-20 h-12 w-12 rounded-full flex items-center justify-center mx-auto mb-2">
                   <UserPlus className="text-secondary" />
                 </div>
                 <span className="text-sm font-medium">{t('dashboard.addPatient')}</span>
-              </a>
+              </div>
             </Link>
           )}
           
           {user?.role === UserRole.DOCTOR && (
             <Link href="/prescriptions/new">
-              <a className="bg-neutral-100 p-4 rounded-lg text-center hover:bg-neutral-200 transition block">
+              <div className="bg-neutral-100 p-4 rounded-lg text-center hover:bg-neutral-200 transition block cursor-pointer">
                 <div className="bg-info bg-opacity-20 h-12 w-12 rounded-full flex items-center justify-center mx-auto mb-2">
                   <Stethoscope className="text-info" />
                 </div>
                 <span className="text-sm font-medium">{t('dashboard.createPrescription')}</span>
-              </a>
+              </div>
             </Link>
           )}
           
           {user?.role === UserRole.DOCTOR && (
             <Link href="/billing/new">
-              <a className="bg-neutral-100 p-4 rounded-lg text-center hover:bg-neutral-200 transition block">
+              <div className="bg-neutral-100 p-4 rounded-lg text-center hover:bg-neutral-200 transition block cursor-pointer">
                 <div className="bg-warning bg-opacity-20 h-12 w-12 rounded-full flex items-center justify-center mx-auto mb-2">
                   <Receipt className="text-warning" />
                 </div>
                 <span className="text-sm font-medium">{t('dashboard.generateInvoice')}</span>
-              </a>
+              </div>
             </Link>
           )}
           
           {user?.role === UserRole.PATIENT && (
             <>
               <Link href="/prescriptions">
-                <a className="bg-neutral-100 p-4 rounded-lg text-center hover:bg-neutral-200 transition block">
+                <div className="bg-neutral-100 p-4 rounded-lg text-center hover:bg-neutral-200 transition block cursor-pointer">
                   <div className="bg-info bg-opacity-20 h-12 w-12 rounded-full flex items-center justify-center mx-auto mb-2">
                     <Stethoscope className="text-info" />
                   </div>
                   <span className="text-sm font-medium">{t('prescriptions.prescriptions')}</span>
-                </a>
+                </div>
               </Link>
               
               <Link href="/medical-records">
-                <a className="bg-neutral-100 p-4 rounded-lg text-center hover:bg-neutral-200 transition block">
+                <div className="bg-neutral-100 p-4 rounded-lg text-center hover:bg-neutral-200 transition block cursor-pointer">
                   <div className="bg-warning bg-opacity-20 h-12 w-12 rounded-full flex items-center justify-center mx-auto mb-2">
                     <FileText className="text-warning" />
                   </div>
                   <span className="text-sm font-medium">{t('records.medicalRecords')}</span>
-                </a>
+                </div>
               </Link>
             </>
           )}
