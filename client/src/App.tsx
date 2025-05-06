@@ -19,6 +19,7 @@ import PrescriptionsPage from "@/pages/prescriptions/PrescriptionsPage";
 import CreatePrescriptionPage from "@/pages/prescriptions/CreatePrescriptionPage";
 import MedicalRecordsPage from "@/pages/medical-records/MedicalRecordsPage";
 import BillingPage from "@/pages/billing/BillingPage";
+import NewInvoicePage from "@/pages/billing/NewInvoicePage";
 import SettingsPage from "@/pages/settings/SettingsPage";
 import NotFound from "@/pages/not-found";
 import NewPatientPage from "@/pages/patients/NewPatientPage";
@@ -130,6 +131,11 @@ function App() {
               <Route path="/billing">
                 <MainLayout>
                   <BillingPage />
+                </MainLayout>
+              </Route>
+              <Route path="/invoices/new">
+                <MainLayout>
+                  <NewInvoicePage />
                 </MainLayout>
               </Route>
               <Route path="/billing/:id">
