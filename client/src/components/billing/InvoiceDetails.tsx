@@ -185,7 +185,7 @@ export default function InvoiceDetails({ invoiceId, onClose }: InvoiceDetailsPro
                       {t('billing.totalAmount')}
                     </TableCell>
                     <TableCell className="text-right font-bold">
-                      ${invoice.totalAmount.toFixed(2)}
+                      {formatINR(invoice.totalAmount)}
                     </TableCell>
                   </TableRow>
                 </TableBody>

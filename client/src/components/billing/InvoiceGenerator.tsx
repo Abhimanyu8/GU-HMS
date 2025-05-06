@@ -8,7 +8,7 @@ import { useQuery, useMutation } from '@tanstack/react-query';
 import { queryClient, apiRequest } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
 import { CalendarIcon, PlusCircle, X, Download } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { cn, formatINR } from '@/lib/utils';
 
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Button } from '@/components/ui/button';
@@ -460,11 +460,11 @@ export default function InvoiceGenerator({
           <div className="w-full max-w-md">
             <div className="flex justify-between py-2">
               <span className="font-medium">{t('billing.subtotal')}:</span>
-              <span>${totalAmount.toFixed(2)}</span>
+              <span>{formatINR(totalAmount)}</span>
             </div>
             <div className="flex justify-between py-2 border-t border-neutral-200">
               <span className="font-medium">{t('billing.totalAmount')}:</span>
-              <span className="font-bold">${totalAmount.toFixed(2)}</span>
+              <span className="font-bold">{formatINR(totalAmount)}</span>
             </div>
           </div>
         </div>

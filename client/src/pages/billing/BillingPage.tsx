@@ -6,6 +6,7 @@ import { format } from 'date-fns';
 import { Link } from 'wouter';
 import { useAuth } from '@/context/AuthContext';
 import { UserRole, InvoiceStatus } from '@/lib/constants';
+import { formatINR } from '@/lib/utils';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -195,7 +196,7 @@ export default function BillingPage({ invoiceId }: BillingPageProps) {
                           : <span className="text-neutral-400">-</span>
                         }
                       </TableCell>
-                      <TableCell>${invoice.totalAmount.toFixed(2)}</TableCell>
+                      <TableCell>{formatINR(invoice.totalAmount)}</TableCell>
                       <TableCell>
                         <Badge variant={getStatusBadgeVariant(invoice.status)}>
                           {t(`billing.${invoice.status}`)}
