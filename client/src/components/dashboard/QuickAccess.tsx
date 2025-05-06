@@ -56,7 +56,7 @@ export default function QuickAccess({ className }: QuickAccessProps) {
   return (
     <Card className={`bg-white rounded-lg shadow ${className}`}>
       <div className="px-4 py-3 border-b border-neutral-200">
-        <h2 className="font-heading font-medium">{t('dashboard.quickAccess')}</h2>
+        <h2 className="font-heading font-medium">{t('sidebar.quickAccess')}</h2>
       </div>
       
       <CardContent className="p-4">
@@ -66,7 +66,7 @@ export default function QuickAccess({ className }: QuickAccessProps) {
               <div className="bg-primary bg-opacity-20 h-12 w-12 rounded-full flex items-center justify-center mx-auto mb-2">
                 <CalendarPlus className="text-primary" />
               </div>
-              <span className="text-sm font-medium">{t('dashboard.newAppointment')}</span>
+              <span className="text-sm font-medium">{t('sidebar.newAppointment')}</span>
             </div>
           </Link>
           
@@ -76,7 +76,7 @@ export default function QuickAccess({ className }: QuickAccessProps) {
                 <div className="bg-secondary bg-opacity-20 h-12 w-12 rounded-full flex items-center justify-center mx-auto mb-2">
                   <UserPlus className="text-secondary" />
                 </div>
-                <span className="text-sm font-medium">{t('dashboard.addPatient')}</span>
+                <span className="text-sm font-medium">{t('sidebar.addPatient')}</span>
               </div>
             </Link>
           )}
@@ -87,7 +87,7 @@ export default function QuickAccess({ className }: QuickAccessProps) {
                 <div className="bg-info bg-opacity-20 h-12 w-12 rounded-full flex items-center justify-center mx-auto mb-2">
                   <Stethoscope className="text-info" />
                 </div>
-                <span className="text-sm font-medium">{t('dashboard.createPrescription')}</span>
+                <span className="text-sm font-medium">{t('sidebar.createPrescription')}</span>
               </div>
             </Link>
           )}
@@ -98,7 +98,7 @@ export default function QuickAccess({ className }: QuickAccessProps) {
                 <div className="bg-warning bg-opacity-20 h-12 w-12 rounded-full flex items-center justify-center mx-auto mb-2">
                   <Receipt className="text-warning" />
                 </div>
-                <span className="text-sm font-medium">{t('dashboard.generateInvoice')}</span>
+                <span className="text-sm font-medium">{t('sidebar.generateInvoice')}</span>
               </div>
             </Link>
           )}
@@ -127,7 +127,7 @@ export default function QuickAccess({ className }: QuickAccessProps) {
         </div>
         
         <div className="mt-6">
-          <h3 className="text-sm font-medium mb-3">{t('dashboard.recentReports')}</h3>
+          <h3 className="text-sm font-medium mb-3">{t('sidebar.recentReports')}</h3>
           
           {recentFiles.length === 0 ? (
             <div className="p-3 text-center text-neutral-400 text-sm">
