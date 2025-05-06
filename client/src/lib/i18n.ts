@@ -337,9 +337,15 @@ i18n
   .use(initReactI18next)
   .init({
     resources: {
-      en: enTranslations,
-      hi: hiTranslations,
-      as: asTranslations
+      en: {
+        translation: enTranslations
+      },
+      hi: {
+        translation: hiTranslations
+      },
+      as: {
+        translation: asTranslations
+      }
     },
     lng: 'en',
     fallbackLng: 'en',
