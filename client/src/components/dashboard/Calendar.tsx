@@ -192,7 +192,7 @@ export default function Calendar() {
         </div>
         
         <div className="mt-4">
-          <h4 className="font-medium text-sm mb-2">{t('dashboard.todaysSchedule')}</h4>
+          <h4 className="font-medium text-sm mb-2">{t('sidebar.todaysSchedule')}</h4>
           
           <div className="space-y-2">
             {todaysAppointments && todaysAppointments.length > 0 ? (
