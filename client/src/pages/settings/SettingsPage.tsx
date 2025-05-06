@@ -511,7 +511,7 @@ export default function SettingsPage() {
             <CardContent>
               <div className="space-y-4">
                 <div className="grid gap-2">
-                  <FormLabel>{t('settings.selectLanguage')}</FormLabel>
+                  <div className="mb-2">{t('settings.selectLanguage')}</div>
                   <Select
                     value={currentLanguage}
                     onValueChange={handleLanguageChange}

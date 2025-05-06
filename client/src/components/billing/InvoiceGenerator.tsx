@@ -174,7 +174,9 @@ export default function InvoiceGenerator({
       }
     },
     onSuccess: (data) => {
+      // Invalidate all invoice-related queries to ensure data is refreshed everywhere
       queryClient.invalidateQueries({ queryKey: ['/api/invoices'] });
+      queryClient.invalidateQueries({ queryKey: ['/api/dashboard/stats'] });
       
       toast({
         title: invoiceId ? t('billing.updated') : t('billing.created'),
