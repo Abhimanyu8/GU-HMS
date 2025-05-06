@@ -127,10 +127,10 @@ Follow these steps to install and run the MediCare Hospital Management System on
 
 3. Login with default credentials:
    - **Doctor Login**: 
-     - Username: doctor
+     - Username: dr.johnson
      - Password: password
    - **Patient Login**:
-     - Username: patient
+     - Username: patient1
      - Password: password
 
 ## Modules

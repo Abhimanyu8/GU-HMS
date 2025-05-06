@@ -284,6 +284,7 @@ const asTranslations = {
     delete: 'মচি পেলাওক',
     edit: 'সম্পাদনা কৰক',
     view: 'চাওক',
+    viewAll: 'সকলো চাওক',
     search: 'বিচাৰক',
     noDataFound: 'কোনো তথ্য পোৱা নাই',
     filter: 'ফিল্টাৰ',
