@@ -44,13 +44,13 @@ const NavItem = ({ path, icon, label, isActive, onClick }: NavItemProps) => {
   return (
     <li>
       <Link href={path}>
-        <a 
-          className={`flex items-center p-2 rounded ${isActive ? 'bg-primary text-white' : 'hover:bg-neutral-400 transition text-white'}`}
+        <div
+          className={`flex items-center p-2 rounded cursor-pointer ${isActive ? 'bg-primary text-white' : 'hover:bg-neutral-400 transition text-white'}`}
           onClick={onClick}
         >
           {renderIcon()}
-          <span>{t(`dashboard.${label}`)}</span>
-        </a>
+          <span>{t(`sidebar.${label}`)}</span>
+        </div>
       </Link>
     </li>
   );

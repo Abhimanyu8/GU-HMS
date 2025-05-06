@@ -60,90 +60,90 @@ function App() {
             <Toaster />
             <Switch>
               {/* Public Routes */}
-            <Route path="/login">
-              <AuthLayout>
-                <LoginPage />
-              </AuthLayout>
-            </Route>
+              <Route path="/login">
+                <AuthLayout>
+                  <LoginPage />
+                </AuthLayout>
+              </Route>
 
-            {/* Protected Routes */}
-            <Route path="/">
-              <MainLayout>
-                <DashboardPage />
-              </MainLayout>
-            </Route>
-            <Route path="/dashboard">
-              <MainLayout>
-                <DashboardPage />
-              </MainLayout>
-            </Route>
-            <Route path="/patients">
-              <MainLayout>
-                <PatientsPage />
-              </MainLayout>
-            </Route>
-            <Route path="/patients/:id">
-              {(params) => (
+              {/* Protected Routes */}
+              <Route path="/">
                 <MainLayout>
-                  <PatientDetailsPage patientId={parseInt(params.id)} />
+                  <DashboardPage />
                 </MainLayout>
-              )}
-            </Route>
-            <Route path="/appointments">
-              <MainLayout>
-                <AppointmentsPage />
-              </MainLayout>
-            </Route>
-            <Route path="/appointments/new">
-              <MainLayout>
-                <AppointmentsPage isCreating={true} />
-              </MainLayout>
-            </Route>
-            <Route path="/prescriptions">
-              <MainLayout>
-                <PrescriptionsPage />
-              </MainLayout>
-            </Route>
-            <Route path="/prescriptions/new">
-              <MainLayout>
-                <CreatePrescriptionPage />
-              </MainLayout>
-            </Route>
-            <Route path="/prescriptions/:id">
-              {(params) => (
+              </Route>
+              <Route path="/dashboard">
                 <MainLayout>
-                  <PrescriptionsPage prescriptionId={parseInt(params.id)} />
+                  <DashboardPage />
                 </MainLayout>
-              )}
-            </Route>
-            <Route path="/medical-records">
-              <MainLayout>
-                <MedicalRecordsPage />
-              </MainLayout>
-            </Route>
-            <Route path="/billing">
-              <MainLayout>
-                <BillingPage />
-              </MainLayout>
-            </Route>
-            <Route path="/billing/:id">
-              {(params) => (
+              </Route>
+              <Route path="/patients">
                 <MainLayout>
-                  <BillingPage invoiceId={parseInt(params.id)} />
+                  <PatientsPage />
                 </MainLayout>
-              )}
-            </Route>
-            <Route path="/settings">
-              <MainLayout>
-                <SettingsPage />
-              </MainLayout>
-            </Route>
+              </Route>
+              <Route path="/patients/:id">
+                {(params) => (
+                  <MainLayout>
+                    <PatientDetailsPage patientId={parseInt(params.id)} />
+                  </MainLayout>
+                )}
+              </Route>
+              <Route path="/appointments">
+                <MainLayout>
+                  <AppointmentsPage />
+                </MainLayout>
+              </Route>
+              <Route path="/appointments/new">
+                <MainLayout>
+                  <AppointmentsPage isCreating={true} />
+                </MainLayout>
+              </Route>
+              <Route path="/prescriptions">
+                <MainLayout>
+                  <PrescriptionsPage />
+                </MainLayout>
+              </Route>
+              <Route path="/prescriptions/new">
+                <MainLayout>
+                  <CreatePrescriptionPage />
+                </MainLayout>
+              </Route>
+              <Route path="/prescriptions/:id">
+                {(params) => (
+                  <MainLayout>
+                    <PrescriptionsPage prescriptionId={parseInt(params.id)} />
+                  </MainLayout>
+                )}
+              </Route>
+              <Route path="/medical-records">
+                <MainLayout>
+                  <MedicalRecordsPage />
+                </MainLayout>
+              </Route>
+              <Route path="/billing">
+                <MainLayout>
+                  <BillingPage />
+                </MainLayout>
+              </Route>
+              <Route path="/billing/:id">
+                {(params) => (
+                  <MainLayout>
+                    <BillingPage invoiceId={parseInt(params.id)} />
+                  </MainLayout>
+                )}
+              </Route>
+              <Route path="/settings">
+                <MainLayout>
+                  <SettingsPage />
+                </MainLayout>
+              </Route>
 
-            {/* Fallback to 404 */}
-            <Route component={NotFound} />
-          </Switch>
-        </TooltipProvider>
-      </AuthProvider>
+              {/* Fallback to 404 */}
+              <Route component={NotFound} />
+            </Switch>
+          </TooltipProvider>
+        </AuthProvider>
       </LanguageProvider>
     </QueryClientProvider>
   );

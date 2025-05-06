@@ -1,8 +1,7 @@
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Bell, ChevronDown, User, Settings, LogOut, Menu } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
-import { LANGUAGES } from '@/lib/constants';
+import { useLanguage } from '@/context/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { 
   DropdownMenu, 
@@ -19,14 +18,9 @@ type HeaderProps = {
 };
 
 export default function Header({ title, toggleSidebar }: HeaderProps) {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { user, logout } = useAuth();
-  const [currentLang, setCurrentLang] = useState(i18n.language);
-
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
-    setCurrentLang(lng);
-  };
+  const { currentLanguage, changeLanguage, languages } = useLanguage();
 
   const getLangDisplayText = (code: string) => {
     switch (code) {
@@ -72,12 +66,12 @@ export default function Header({ title, toggleSidebar }: HeaderProps) {
                 variant="ghost" 
                 className="flex items-center space-x-1 text-neutral-400 hover:text-neutral-500"
               >
-                <span>{getLangDisplayText(currentLang)}</span>
+                <span>{getLangDisplayText(currentLanguage)}</span>
                 <ChevronDown className="h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              {LANGUAGES.map((lang) => (
+              {languages.map((lang) => (
                 <DropdownMenuItem key={lang.code} onClick={() => changeLanguage(lang.code)}>
                   {lang.name}
                 </DropdownMenuItem>
