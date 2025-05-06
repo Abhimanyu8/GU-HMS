@@ -118,7 +118,7 @@ export default function InvoiceDetails({ invoiceId, onClose }: InvoiceDetailsPro
               <div className="flex items-center text-sm">
                 <Calendar className="h-4 w-4 mr-2 text-neutral-500" />
                 <span className="font-medium mr-2">{t('billing.invoiceDate')}:</span>
-                <span>{format(new Date(invoice.invoiceDate), 'PPP')}</span>
+                <span>{invoice.invoiceDate ? format(new Date(invoice.invoiceDate), 'PPP') : '-'}</span>
               </div>
               <div className="flex items-center text-sm">
                 <Calendar className="h-4 w-4 mr-2 text-neutral-500" />

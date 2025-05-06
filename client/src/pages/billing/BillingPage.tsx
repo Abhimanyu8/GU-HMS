@@ -190,7 +190,12 @@ export default function BillingPage({ invoiceId }: BillingPageProps) {
                           <div>{invoice.patient?.fullName}</div>
                         </div>
                       </TableCell>
-                      <TableCell>{format(new Date(invoice.invoiceDate), "PP")}</TableCell>
+                      <TableCell>
+                        {invoice.invoiceDate 
+                          ? format(new Date(invoice.invoiceDate), "PP")
+                          : <span className="text-neutral-400">-</span>
+                        }
+                      </TableCell>
                       <TableCell>
                         {invoice.dueDate 
                           ? format(new Date(invoice.dueDate), "PP") 
