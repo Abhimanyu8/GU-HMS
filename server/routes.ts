@@ -1011,8 +1011,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const { items, ...invoiceData } = req.body;
       
+      console.log("Received invoice data:", JSON.stringify(invoiceData));
+      console.log("Received items:", JSON.stringify(items));
+      
       // Validate input
-      const validatedData = insertInvoiceSchema.parse(invoiceData);
+      try {
+        var validatedData = insertInvoiceSchema.parse(invoiceData);
+        console.log("Validation passed for invoice data");
+      } catch (validationError) {
+        console.error("Validation error for invoice data:", validationError);
+        throw validationError;
+      }
       
       // Check if the patient exists
       const patient = await storage.getUser(validatedData.patientId);
