@@ -58,6 +58,7 @@ export default function BillingPage({ invoiceId }: BillingPageProps) {
   // Get invoices data from API
   const { data, isLoading } = useQuery<{ invoices: any[] }>({
     queryKey: ['/api/invoices'],
+    initialData: { invoices: [] },
   });
 
   // Apply filters to invoices

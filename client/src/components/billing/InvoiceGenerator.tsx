@@ -129,16 +129,30 @@ export default function InvoiceGenerator({
 
   // Calculate total amount
   useEffect(() => {
-    const items = form.watch('items');
-    if (items) {
-      const newTotal = items.reduce((total, item) => {
-        const quantity = item.quantity || 0;
-        const unitPrice = item.unitPrice || 0;
-        return total + (quantity * unitPrice);
-      }, 0);
-      setTotalAmount(newTotal);
-    }
-  }, [form.watch('items')]);
+    const calculateTotal = () => {
+      const items = form.getValues('items');
+      if (items) {
+        const newTotal = items.reduce((total, item) => {
+          const quantity = item.quantity || 0;
+          const unitPrice = item.unitPrice || 0;
+          return total + (quantity * unitPrice);
+        }, 0);
+        setTotalAmount(newTotal);
+      }
+    };
+
+    // Initial calculation
+    calculateTotal();
+    
+    // Subscribe to form changes
+    const subscription = form.watch((value, { name }) => {
+      if (name && (name.startsWith('items') || name === 'items')) {
+        calculateTotal();
+      }
+    });
+    
+    return () => subscription.unsubscribe();
+  }, [form]);
 
   const mutation = useMutation({
     mutationFn: async (values: z.infer<typeof formSchema>) => {
@@ -412,7 +426,10 @@ export default function InvoiceGenerator({
                             min="1" 
                             disabled={isLoading} 
                             {...field}
-                            onChange={(e) => field.onChange(parseInt(e.target.value) || 1)}
+                            onChange={(e) => {
+                              const value = parseInt(e.target.value) || 1;
+                              field.onChange(value);
+                            }}
                           />
                         </FormControl>
                         <FormMessage />
@@ -434,7 +451,10 @@ export default function InvoiceGenerator({
                             step="0.01" 
                             disabled={isLoading} 
                             {...field}
-                            onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
+                            onChange={(e) => {
+                              const value = parseFloat(e.target.value) || 0;
+                              field.onChange(value);
+                            }}
                           />
                         </FormControl>
                         <FormMessage />
