@@ -4,6 +4,7 @@ import { format } from 'date-fns';
 import { Download, Calendar, User, FileText, Receipt } from 'lucide-react';
 import { queryClient, apiRequest } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
+import { formatINR } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -175,8 +176,8 @@ export default function InvoiceDetails({ invoiceId, onClose }: InvoiceDetailsPro
                     <TableRow key={index}>
                       <TableCell className="font-medium">{item.description}</TableCell>
                       <TableCell className="text-right">{item.quantity}</TableCell>
-                      <TableCell className="text-right">${item.unitPrice.toFixed(2)}</TableCell>
-                      <TableCell className="text-right">${item.totalPrice.toFixed(2)}</TableCell>
+                      <TableCell className="text-right">{formatINR(item.unitPrice)}</TableCell>
+                      <TableCell className="text-right">{formatINR(item.totalPrice)}</TableCell>
                     </TableRow>
                   ))}
                   <TableRow>
