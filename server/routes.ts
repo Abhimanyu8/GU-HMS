@@ -1016,6 +1016,19 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Validate input
       try {
+        // Ensure totalAmount is present as it's required by the schema
+        if (!invoiceData.totalAmount) {
+          // If missing, calculate it from items
+          if (items && Array.isArray(items) && items.length > 0) {
+            invoiceData.totalAmount = items.reduce((total, item) => {
+              return total + (Number(item.quantity) * Number(item.unitPrice));
+            }, 0);
+          } else {
+            invoiceData.totalAmount = 0;
+          }
+          console.log("Added calculated totalAmount:", invoiceData.totalAmount);
+        }
+        
         var validatedData = insertInvoiceSchema.parse(invoiceData);
         console.log("Validation passed for invoice data");
       } catch (validationError) {

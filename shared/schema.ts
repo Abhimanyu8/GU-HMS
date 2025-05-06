@@ -135,8 +135,16 @@ export const insertMedicalRecordSchema = createInsertSchema(medicalRecords).omit
 export const insertPrescriptionSchema = createInsertSchema(prescriptions).omit({ id: true });
 export const insertPrescriptionItemSchema = createInsertSchema(prescriptionItems).omit({ id: true });
 export const insertMedicalFileSchema = createInsertSchema(medicalFiles).omit({ id: true });
-export const insertInvoiceSchema = createInsertSchema(invoices).omit({ id: true });
-export const insertInvoiceItemSchema = createInsertSchema(invoiceItems).omit({ id: true });
+export const insertInvoiceSchema = createInsertSchema(invoices, {
+  dueDate: z.string().nullable().optional(),
+  invoiceDate: z.string().nullable().optional(),
+  status: z.string().default('unpaid'),
+  notes: z.string().nullable().optional(),
+  appointmentId: z.number().nullable().optional()
+}).omit({ id: true });
+export const insertInvoiceItemSchema = createInsertSchema(invoiceItems, {
+  quantity: z.number().default(1)
+}).omit({ id: true });
 
 // Types
 export type User = typeof users.$inferSelect;

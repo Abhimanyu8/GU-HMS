@@ -159,6 +159,7 @@ export default function InvoiceGenerator({
       // Format dates and add total amount
       const formattedValues = {
         ...values,
+        invoiceDate: format(new Date(), 'yyyy-MM-dd'),
         dueDate: format(values.dueDate, 'yyyy-MM-dd'),
         totalAmount,
         items: values.items.map(item => ({
