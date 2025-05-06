@@ -10,7 +10,8 @@ import {
   Receipt, 
   Settings, 
   Menu, 
-  X 
+  X,
+  IndianRupee
 } from 'lucide-react';
 import { DOCTOR_NAV_ITEMS, PATIENT_NAV_ITEMS, UserRole, APP_NAME } from '@/lib/constants';
 import { useAuth } from '@/context/AuthContext';
@@ -36,7 +37,7 @@ const NavItem = ({ path, icon, label, isActive, onClick }: NavItemProps) => {
       case 'UserRound': return <UserRound className="w-5 text-center mr-3" />;
       case 'Stethoscope': return <Stethoscope className="w-5 text-center mr-3" />;
       case 'FileText': return <FileText className="w-5 text-center mr-3" />;
-      case 'Receipt': return <Receipt className="w-5 text-center mr-3" />;
+      case 'Receipt': return <IndianRupee className="w-5 text-center mr-3" />;
       case 'Settings': return <Settings className="w-5 text-center mr-3" />;
       default: return <ChartLine className="w-5 text-center mr-3" />;
     }

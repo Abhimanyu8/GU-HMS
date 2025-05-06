@@ -87,7 +87,7 @@ export default function StatCard({ type, value, change, suffix }: StatCardProps)
         <div>
           <div className="text-neutral-400 text-sm">{getTitle()}</div>
           <div className="text-2xl font-heading font-medium mt-1">
-            {type === 'reports' ? formatINR(value) : value}
+            {value}
           </div>
         </div>
         <div className={cn("p-3 rounded-full", bgColorClass)}>
