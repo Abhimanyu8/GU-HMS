@@ -109,8 +109,8 @@ export default function NewPatientPage() {
       // Invalidate queries
       queryClient.invalidateQueries({ queryKey: ['/api/users'] });
 
-      // Navigate to the patient details page
-      navigate(`/patients/${data.user.id}`);
+      // Navigate back to the patients list page
+      navigate('/patients');
     } catch (error) {
       console.error('Create patient error:', error);
       toast({
