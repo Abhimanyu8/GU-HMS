@@ -446,7 +446,7 @@ export default function InvoiceGenerator({
                   <FormItem className="md:col-span-1">
                     <FormLabel>{t('billing.totalPrice')}</FormLabel>
                     <div className="border rounded-md h-10 flex items-center px-3 bg-neutral-50">
-                      {form.watch(`items.${index}.quantity`) * form.watch(`items.${index}.unitPrice`)}
+                      {formatINR(form.watch(`items.${index}.quantity`) * form.watch(`items.${index}.unitPrice`))}
                     </div>
                   </FormItem>
                 </div>

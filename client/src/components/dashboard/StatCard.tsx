@@ -8,7 +8,7 @@ import {
   ArrowDown, 
   ChartLine 
 } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { cn, formatINR } from '@/lib/utils';
 
 type StatCardProps = {
   type: 'appointments' | 'patients' | 'reports' | 'totalPatients';
@@ -86,7 +86,9 @@ export default function StatCard({ type, value, change, suffix }: StatCardProps)
       <div className="flex items-center justify-between">
         <div>
           <div className="text-neutral-400 text-sm">{getTitle()}</div>
-          <div className="text-2xl font-heading font-medium mt-1">{value}</div>
+          <div className="text-2xl font-heading font-medium mt-1">
+            {type === 'reports' ? formatINR(value) : value}
+          </div>
         </div>
         <div className={cn("p-3 rounded-full", bgColorClass)}>
           {getIcon()}
