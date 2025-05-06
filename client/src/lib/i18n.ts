@@ -359,6 +359,9 @@ const hiTranslations = {
     success: 'सफलता',
     failure: 'विफलता',
     downloadPdf: 'PDF डाउनलोड करें',
+    somethingWentWrong: 'कुछ गलत हो गया। कृपया पुनः प्रयास करें।',
+    unauthorized: 'आप इस क्रिया को करने के लिए अधिकृत नहीं हैं।',
+    submitting: 'जमा हो रहा है...',
   },
   auth: {
     login: 'लॉगिन',
@@ -610,6 +613,19 @@ const hiTranslations = {
     preferencesUpdateSuccess: 'आपकी सूचना प्राथमिकताएँ सफलतापूर्वक अपडेट कर दी गई हैं',
     saving: 'सहेज रहा है...',
     updating: 'अपडेट कर रहा है...'
+  },
+  validation: {
+    required: 'यह फील्ड आवश्यक है',
+    usernameLength: 'उपयोगकर्ता नाम कम से कम 3 अक्षर का होना चाहिए',
+    passwordLength: 'पासवर्ड कम से कम 6 अक्षर का होना चाहिए',
+    fullNameRequired: 'पूरा नाम कम से कम 2 अक्षर का होना चाहिए',
+    invalidEmail: 'कृपया एक वैध ईमेल पता दर्ज करें',
+    phoneRequired: 'फोन नंबर आवश्यक है',
+    mustSelectGender: 'कृपया एक लिंग चुनें',
+    mustSelectBloodGroup: 'कृपया एक रक्त समूह चुनें',
+    addressRequired: 'पता आवश्यक है',
+    error: 'सत्यापन त्रुटि',
+    passwordMismatch: 'पासवर्ड मेल नहीं खाते'
   }
 };
 
@@ -636,6 +652,9 @@ const asTranslations = {
     success: 'সফলতা',
     failure: 'বিফলতা',
     downloadPdf: 'PDF ডাউনলোড কৰক',
+    somethingWentWrong: 'কিবা ভুল হৈছে। অনুগ্ৰহ কৰি পুনৰ চেষ্টা কৰক।',
+    unauthorized: 'আপুনি এই কাৰ্য্য কৰিবলৈ অনুমোদিত নহয়।',
+    submitting: 'জমা দি আছে...',
   },
   auth: {
     login: 'লগইন',
@@ -656,6 +675,10 @@ const asTranslations = {
     noAccount: 'একাউন্ট নাই? পঞ্জীয়ন কৰক',
     alreadyHaveAccount: 'ইতিমধ্যে একাউন্ট আছে? লগইন কৰক',
     selectRole: 'ভূমিকা বাছনি কৰক',
+    usernamePlaceholder: 'ব্যৱহাৰকাৰী নাম প্ৰৱেশ কৰক',
+    passwordPlaceholder: 'পাছৱৰ্ড প্ৰৱেশ কৰক',
+    emailPlaceholder: 'ইমেইল ঠিকনা প্ৰৱেশ কৰক',
+    fullNamePlaceholder: 'সম্পূৰ্ণ নাম প্ৰৱেশ কৰক',
   },
   dashboard: {
     dashboard: 'ডেশ্বৰ্ড',
