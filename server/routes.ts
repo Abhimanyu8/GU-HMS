@@ -925,6 +925,50 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Invoice routes
+  // Get all invoices - for admin/doctor to see all invoices
+  app.get("/api/invoices", authenticate, async (req, res) => {
+    try {
+      const { currentUser } = req.body;
+      
+      // Only doctors should have access to all invoices
+      if (currentUser.role !== 'doctor') {
+        // For patients, only return their own invoices
+        const patientInvoices = await storage.getInvoicesByPatient(currentUser.id);
+        
+        // Get invoice items for each invoice
+        const invoicesWithItems = await Promise.all(patientInvoices.map(async invoice => {
+          const items = await storage.getInvoiceItems(invoice.id);
+          return { ...invoice, items };
+        }));
+        
+        return res.json({ invoices: invoicesWithItems });
+      }
+      
+      // Get all users to get patient names
+      const users = await storage.getUsers();
+      
+      // Get all invoices 
+      const allInvoices = await storage.getInvoices();
+      
+      // Get invoice items for each invoice and add patient name
+      const invoicesWithDetails = await Promise.all(allInvoices.map(async invoice => {
+        const items = await storage.getInvoiceItems(invoice.id);
+        const patient = users.find(user => user.id === invoice.patientId);
+        
+        return { 
+          ...invoice, 
+          items,
+          patientName: patient ? patient.fullName : 'Unknown'
+        };
+      }));
+      
+      res.json({ invoices: invoicesWithDetails });
+    } catch (error) {
+      console.error("Get all invoices error:", error);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  });
+
   app.get("/api/patients/:patientId/invoices", authenticate, async (req, res) => {
     try {
       const patientId = Number(req.params.patientId);

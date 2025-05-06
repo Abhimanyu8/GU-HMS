@@ -69,6 +69,7 @@ export interface IStorage {
 
   // Invoices
   getInvoice(id: number): Promise<Invoice | undefined>;
+  getInvoices(): Promise<Invoice[]>;
   getInvoicesByPatient(patientId: number): Promise<Invoice[]>;
   createInvoice(invoice: InsertInvoice): Promise<Invoice>;
   updateInvoice(id: number, invoice: Partial<Invoice>): Promise<Invoice | undefined>;
@@ -970,6 +971,10 @@ export class MemStorage implements IStorage {
   // Invoices
   async getInvoice(id: number): Promise<Invoice | undefined> {
     return this.invoices.get(id);
+  }
+
+  async getInvoices(): Promise<Invoice[]> {
+    return Array.from(this.invoices.values());
   }
 
   async getInvoicesByPatient(patientId: number): Promise<Invoice[]> {
