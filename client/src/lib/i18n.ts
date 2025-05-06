@@ -157,6 +157,7 @@ const enTranslations = {
     addressPlaceholder: 'Enter address',
     notFound: 'Patient not found',
     fillPatientDetails: 'Fill in all the required information to register a new patient',
+    noConditions: 'No medical conditions',
   },
   prescriptions: {
     prescriptions: 'Prescriptions',
@@ -488,6 +489,7 @@ const hiTranslations = {
     addressPlaceholder: 'पता दर्ज करें',
     notFound: 'रोगी नहीं मिला',
     fillPatientDetails: 'एक नए रोगी को पंजीकृत करने के लिए सभी आवश्यक जानकारी भरें',
+    noConditions: 'कोई चिकित्सा स्थिति नहीं',
   },
   prescriptions: {
     prescriptions: 'नुस्खे',
@@ -794,6 +796,7 @@ const asTranslations = {
     addressPlaceholder: 'ঠিকনা প্ৰবিষ্ট কৰক',
     notFound: 'ৰোগী পোৱা নাই',
     fillPatientDetails: 'এজন নতুন ৰোগী পঞ্জীয়ন কৰিবলৈ সকলো আৱশ্যকীয় তথ্য পূৰণ কৰক',
+    noConditions: 'কোনো মেডিকেল চিকিৎসা নাই',
   },
   prescriptions: {
     prescriptions: 'প্ৰেছক্ৰিপছনসমূহ',
