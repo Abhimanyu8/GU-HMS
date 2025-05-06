@@ -21,6 +21,7 @@ import MedicalRecordsPage from "@/pages/medical-records/MedicalRecordsPage";
 import BillingPage from "@/pages/billing/BillingPage";
 import SettingsPage from "@/pages/settings/SettingsPage";
 import NotFound from "@/pages/not-found";
+import NewPatientPage from "@/pages/patients/NewPatientPage";
 
 // Layouts
 import MainLayout from "@/components/layout/MainLayout";
@@ -80,6 +81,11 @@ function App() {
               <Route path="/patients">
                 <MainLayout>
                   <PatientsPage />
+                </MainLayout>
+              </Route>
+              <Route path="/patients/new">
+                <MainLayout>
+                  <NewPatientPage />
                 </MainLayout>
               </Route>
               <Route path="/patients/:id">
