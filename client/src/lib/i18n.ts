@@ -41,6 +41,9 @@ const enTranslations = {
     logout: 'Logout',
     profile: 'Profile',
     settings: 'Settings',
+    noAccount: 'Don\'t have an account? Register',
+    alreadyHaveAccount: 'Already have an account? Login',
+    selectRole: 'Select Role',
   },
   dashboard: {
     dashboard: 'Dashboard',
@@ -341,6 +344,9 @@ const hiTranslations = {
     logout: 'लॉगआउट',
     profile: 'प्रोफ़ाइल',
     settings: 'सेटिंग्स',
+    noAccount: 'खाता नहीं है? रजिस्टर करें',
+    alreadyHaveAccount: 'पहले से ही खाता है? लॉगिन करें',
+    selectRole: 'भूमिका चुनें',
   },
   dashboard: {
     dashboard: 'डैशबोर्ड',
@@ -611,6 +617,9 @@ const asTranslations = {
     logout: 'লগআউট',
     profile: 'প্ৰোফাইল',
     settings: 'ছেটিংছ',
+    noAccount: 'একাউন্ট নাই? পঞ্জীয়ন কৰক',
+    alreadyHaveAccount: 'ইতিমধ্যে একাউন্ট আছে? লগইন কৰক',
+    selectRole: 'ভূমিকা বাছনি কৰক',
   },
   dashboard: {
     dashboard: 'ডেশ্বৰ্ড',
