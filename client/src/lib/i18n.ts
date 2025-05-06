@@ -28,6 +28,7 @@ const enTranslations = {
   auth: {
     login: 'Login',
     register: 'Register',
+    loginSubtitle: 'Sign in to your account',
     forgotPassword: 'Forgot Password?',
     username: 'Username',
     password: 'Password',
@@ -327,6 +328,7 @@ const hiTranslations = {
   auth: {
     login: 'लॉगिन',
     register: 'रजिस्टर',
+    loginSubtitle: 'अपने खाते में साइन इन करें',
     forgotPassword: 'पासवर्ड भूल गए?',
     username: 'उपयोगकर्ता नाम',
     password: 'पासवर्ड',
@@ -596,6 +598,7 @@ const asTranslations = {
   auth: {
     login: 'লগইন',
     register: 'পঞ্জীয়ন',
+    loginSubtitle: 'আপোনাৰ একাউন্টত চাইন ইন কৰক',
     forgotPassword: 'পাছৱৰ্ড পাহৰিছেন?',
     username: 'ব্যৱহাৰকাৰী নাম',
     password: 'পাছৱৰ্ড',
