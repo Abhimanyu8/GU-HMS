@@ -24,6 +24,9 @@ const enTranslations = {
     success: 'Success',
     failure: 'Failure',
     downloadPdf: 'Download PDF',
+    somethingWentWrong: 'Something went wrong. Please try again.',
+    unauthorized: 'You are not authorized to perform this action.',
+    submitting: 'Submitting...',
   },
   auth: {
     login: 'Login',
@@ -44,6 +47,10 @@ const enTranslations = {
     noAccount: 'Don\'t have an account? Register',
     alreadyHaveAccount: 'Already have an account? Login',
     selectRole: 'Select Role',
+    usernamePlaceholder: 'Enter username',
+    passwordPlaceholder: 'Enter password',
+    emailPlaceholder: 'Enter email address',
+    fullNamePlaceholder: 'Enter full name',
   },
   dashboard: {
     dashboard: 'Dashboard',
@@ -137,6 +144,18 @@ const enTranslations = {
     cardView: 'Card View',
     fillDetails: 'Fill in the patient details',
     uploadPhoto: 'Upload Photo',
+    createNewPatient: 'Register a new patient in the system',
+    createPatient: 'Create Patient',
+    patientCreated: 'Patient Created',
+    patientCreatedSuccess: 'Patient has been created successfully',
+    selectGender: 'Select gender',
+    selectBloodGroup: 'Select blood group',
+    fullNamePlaceholder: 'Enter full name',
+    emailPlaceholder: 'Enter email address',
+    phonePlaceholder: 'Enter phone number',
+    addressPlaceholder: 'Enter address',
+    notFound: 'Patient not found',
+    fillPatientDetails: 'Fill in all the required information to register a new patient',
   },
   prescriptions: {
     prescriptions: 'Prescriptions',
@@ -301,6 +320,19 @@ const enTranslations = {
     preferencesUpdateSuccess: 'Your notification preferences have been updated successfully',
     saving: 'Saving...',
     updating: 'Updating...'
+  },
+  validation: {
+    required: 'This field is required',
+    usernameLength: 'Username must be at least 3 characters',
+    passwordLength: 'Password must be at least 6 characters',
+    fullNameRequired: 'Full name must be at least 2 characters',
+    invalidEmail: 'Please enter a valid email address',
+    phoneRequired: 'Phone number is required',
+    mustSelectGender: 'Please select a gender',
+    mustSelectBloodGroup: 'Please select a blood group',
+    addressRequired: 'Address is required',
+    error: 'Validation error',
+    passwordMismatch: 'Passwords do not match'
   }
 };
 
@@ -347,6 +379,10 @@ const hiTranslations = {
     noAccount: 'खाता नहीं है? रजिस्टर करें',
     alreadyHaveAccount: 'पहले से ही खाता है? लॉगिन करें',
     selectRole: 'भूमिका चुनें',
+    usernamePlaceholder: 'उपयोगकर्ता नाम दर्ज करें',
+    passwordPlaceholder: 'पासवर्ड दर्ज करें',
+    emailPlaceholder: 'ईमेल पता दर्ज करें',
+    fullNamePlaceholder: 'पूरा नाम दर्ज करें',
   },
   dashboard: {
     dashboard: 'डैशबोर्ड',
