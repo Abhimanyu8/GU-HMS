@@ -1,5 +1,5 @@
 // App information
-export const APP_NAME = 'MediCare';
+export const APP_NAME = 'GU Hospital HMS';
 
 // Appointments status
 export enum AppointmentStatus {

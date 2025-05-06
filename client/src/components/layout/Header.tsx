@@ -11,6 +11,8 @@ import {
   DropdownMenuTrigger 
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { APP_NAME } from '@/lib/constants';
+import guLogoPath from '@/assets/gu-logo.png';
 
 type HeaderProps = {
   title: string;
@@ -45,7 +47,13 @@ export default function Header({ title, toggleSidebar }: HeaderProps) {
               <Menu className="h-5 w-5" />
             </Button>
           )}
-          <h1 className="text-xl font-heading font-medium text-neutral-500">{title}</h1>
+          <div className="flex items-center">
+            <img src={guLogoPath} alt="Gauhati University Logo" className="h-10 mr-3" />
+            <div>
+              <h1 className="text-xl font-heading font-medium text-neutral-500">{title}</h1>
+              <p className="text-xs text-neutral-400">{APP_NAME}</p>
+            </div>
+          </div>
         </div>
         
         <div className="flex items-center space-x-4">
