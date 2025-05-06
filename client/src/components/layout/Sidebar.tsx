@@ -12,10 +12,11 @@ import {
   Menu, 
   X 
 } from 'lucide-react';
-import { DOCTOR_NAV_ITEMS, PATIENT_NAV_ITEMS, UserRole } from '@/lib/constants';
+import { DOCTOR_NAV_ITEMS, PATIENT_NAV_ITEMS, UserRole, APP_NAME } from '@/lib/constants';
 import { useAuth } from '@/context/AuthContext';
 import { Button } from '@/components/ui/button';
 import { useMobile } from '@/hooks/use-mobile';
+import guLogoPath from '@/assets/gu-logo.png';
 
 type NavItemProps = {
   path: string;
@@ -87,8 +88,8 @@ export default function Sidebar() {
     <aside className="bg-neutral-500 text-white w-full md:w-64 flex-shrink-0">
       <div className="flex md:hidden items-center justify-between p-4 border-b border-neutral-400">
         <div className="flex items-center">
-          <CalendarCheck className="mr-2" />
-          <span className="font-heading font-bold text-xl">{t('common.appName')}</span>
+          <img src={guLogoPath} alt="Gauhati University Logo" className="h-8 mr-2" />
+          <span className="font-heading font-bold text-xl">{APP_NAME}</span>
         </div>
         <Button
           variant="ghost"
@@ -101,8 +102,11 @@ export default function Sidebar() {
       </div>
       
       <div className="hidden md:flex items-center p-4 border-b border-neutral-400">
-        <CalendarCheck className="mr-2" />
-        <span className="font-heading font-bold text-xl">{t('common.appName')}</span>
+        <img src={guLogoPath} alt="Gauhati University Logo" className="h-10 mr-3" />
+        <div>
+          <div className="font-heading font-bold text-xl">{APP_NAME}</div>
+          <div className="text-xs opacity-80">Gauhati University Hospital</div>
+        </div>
       </div>
       
       <div className={`${isMobile && !isOpen ? 'hidden' : 'block'} md:block`}>

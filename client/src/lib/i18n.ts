@@ -4,7 +4,7 @@ import { initReactI18next } from 'react-i18next';
 // English translations
 const enTranslations = {
   common: {
-    appName: 'MediCare',
+    appName: 'GU Hospital HMS',
     loading: 'Loading...',
     error: 'An error occurred',
     save: 'Save',
@@ -303,7 +303,7 @@ const enTranslations = {
 // Hindi translations
 const hiTranslations = {
   common: {
-    appName: 'मेडीकेयर',
+    appName: 'जीयू अस्पताल एचएमएस',
     loading: 'लोड हो रहा है...',
     error: 'एक त्रुटि पाई गई',
     save: 'सहेजें',
@@ -572,7 +572,7 @@ const hiTranslations = {
 // Assamese translations
 const asTranslations = {
   common: {
-    appName: 'মেডিকেয়াৰ',
+    appName: 'জিইউ হস্পিটাল এইচএমএছ',
     loading: 'লোড হৈ আছে...',
     error: 'এটা ত্ৰুটি হৈছে',
     save: 'সংৰক্ষণ কৰক',
