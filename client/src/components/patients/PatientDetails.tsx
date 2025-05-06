@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useQuery } from '@tanstack/react-query';
 import { format } from 'date-fns';
 import { Calendar, File, FileText } from 'lucide-react';
+import { formatINR } from '@/lib/utils';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -385,7 +386,7 @@ export default function PatientDetails({ patientId }: PatientDetailsProps) {
                             {invoice.dueDate ? format(new Date(invoice.dueDate), 'MMM d, yyyy') : 'N/A'}
                           </td>
                           <td className="py-3 px-4 text-sm">
-                            ${invoice.totalAmount.toFixed(2)}
+                            {formatINR(invoice.totalAmount)}
                           </td>
                           <td className="py-3 px-4">
                             <Badge 
