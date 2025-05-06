@@ -1,6 +1,6 @@
-# MediCare - Hospital Management System
+# GU Hospital HMS - Gauhati University Hospital Management System
 
-MediCare is a comprehensive hospital management system designed to streamline healthcare operations with electronic health records (EHR), appointment scheduling, prescription management, billing, and analytics. The system supports multiple user roles (doctors and patients) and offers multilingual support.
+GU Hospital HMS is a comprehensive hospital management system designed for Gauhati University Hospital to streamline healthcare operations with electronic health records (EHR), appointment scheduling, prescription management, billing, and analytics. The system supports multiple user roles (doctors and patients) and offers multilingual support in English, Hindi, and Assamese.
 
 ## Table of Contents
 
@@ -80,7 +80,7 @@ MediCare is a comprehensive hospital management system designed to streamline he
 
 ## Installation
 
-Follow these steps to install and run the MediCare Hospital Management System on a Linux system:
+Follow these steps to install and run the GU Hospital HMS on a Linux system:
 
 ### Prerequisites
 
@@ -91,8 +91,8 @@ Follow these steps to install and run the MediCare Hospital Management System on
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/medicare.git
-   cd medicare
+   git clone https://github.com/your-username/gu-hospital-hms.git
+   cd gu-hospital-hms
    ```
 
 2. Install dependencies:
@@ -112,7 +112,7 @@ Follow these steps to install and run the MediCare Hospital Management System on
    NODE_ENV=development
    
    # Database settings (if using PostgreSQL)
-   DATABASE_URL=postgresql://username:password@localhost:5432/medicare
+   DATABASE_URL=postgresql://username:password@localhost:5432/guhospital
    ```
 
 ## Running the Application
