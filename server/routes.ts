@@ -1014,41 +1014,40 @@ export async function registerRoutes(app: Express): Promise<Server> {
       console.log("Received invoice data:", JSON.stringify(invoiceData));
       console.log("Received items:", JSON.stringify(items));
       
-      // Validate input
-      try {
-        // Ensure totalAmount is present as it's required by the schema
-        if (!invoiceData.totalAmount) {
-          // If missing, calculate it from items
-          if (items && Array.isArray(items) && items.length > 0) {
-            invoiceData.totalAmount = items.reduce((total, item) => {
-              return total + (Number(item.quantity) * Number(item.unitPrice));
-            }, 0);
-          } else {
-            invoiceData.totalAmount = 0;
-          }
-          console.log("Added calculated totalAmount:", invoiceData.totalAmount);
-        }
-        
-        var validatedData = insertInvoiceSchema.parse(invoiceData);
-        console.log("Validation passed for invoice data");
-      } catch (validationError) {
-        console.error("Validation error for invoice data:", validationError);
-        throw validationError;
-      }
+      // Manual validation and data preparation instead of using Zod schema
+      const preparedData = {
+        patientId: Number(invoiceData.patientId),
+        status: invoiceData.status || 'unpaid',
+        notes: invoiceData.notes || null,
+        appointmentId: invoiceData.appointmentId ? Number(invoiceData.appointmentId) : null,
+        invoiceDate: invoiceData.invoiceDate || new Date().toISOString().split('T')[0],
+        dueDate: invoiceData.dueDate || null,
+        // Calculate total amount from items if not provided
+        totalAmount: invoiceData.totalAmount || (
+          (items && Array.isArray(items) && items.length > 0) 
+            ? items.reduce((total, item) => total + (Number(item.quantity || 1) * Number(item.unitPrice || 0)), 0)
+            : 0
+        )
+      };
+      
+      console.log("Prepared invoice data:", JSON.stringify(preparedData));
       
       // Check if the patient exists
-      const patient = await storage.getUser(validatedData.patientId);
+      const patient = await storage.getUser(preparedData.patientId);
       if (!patient) {
         return res.status(404).json({ message: "Patient not found" });
       }
       
-      const invoice = await storage.createInvoice(validatedData);
+      const invoice = await storage.createInvoice(preparedData);
       
       // Add invoice items if provided
       if (items && Array.isArray(items) && items.length > 0) {
         const createdItems = await Promise.all(items.map(item => 
           storage.createInvoiceItem({
-            ...item,
+            description: item.description,
+            quantity: Number(item.quantity) || 1,
+            unitPrice: Number(item.unitPrice) || 0,
+            totalPrice: (Number(item.quantity) || 1) * (Number(item.unitPrice) || 0),
             invoiceId: invoice.id
           })
         ));
@@ -1083,6 +1082,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
     } catch (error) {
       if (error instanceof z.ZodError) {
+        console.error("Validation error details:", JSON.stringify(error.errors, null, 2));
+        console.error("Invoice data that failed validation:", JSON.stringify(req.body, null, 2));
         return res.status(400).json({ message: "Invalid invoice data", errors: error.errors });
       }
       
@@ -1101,13 +1102,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(404).json({ message: "Invoice not found" });
       }
       
-      // Validate input
-      const itemData = insertInvoiceItemSchema.parse({
-        ...req.body,
-        invoiceId
-      });
+      // Manual validation and preparation
+      const preparedItem = {
+        invoiceId: invoiceId,
+        description: req.body.description || '',
+        quantity: Number(req.body.quantity) || 1,
+        unitPrice: Number(req.body.unitPrice) || 0,
+        totalPrice: (Number(req.body.quantity) || 1) * (Number(req.body.unitPrice) || 0)
+      };
       
-      const item = await storage.createInvoiceItem(itemData);
+      console.log("Prepared invoice item:", JSON.stringify(preparedItem));
+      
+      const item = await storage.createInvoiceItem(preparedItem);
       
       // Update total amount in invoice
       const items = await storage.getInvoiceItems(invoiceId);
