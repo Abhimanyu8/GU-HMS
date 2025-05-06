@@ -928,22 +928,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Get all invoices - for admin/doctor to see all invoices
   app.get("/api/invoices", async (req, res) => {
     try {
-      const { currentUser } = req.body;
-      
-      // Only doctors should have access to all invoices
-      if (currentUser.role !== 'doctor') {
-        // For patients, only return their own invoices
-        const patientInvoices = await storage.getInvoicesByPatient(currentUser.id);
-        
-        // Get invoice items for each invoice
-        const invoicesWithItems = await Promise.all(patientInvoices.map(async invoice => {
-          const items = await storage.getInvoiceItems(invoice.id);
-          return { ...invoice, items };
-        }));
-        
-        return res.json({ invoices: invoicesWithItems });
-      }
-      
       // Get all users to get patient names
       const users = await storage.getUsers();
       
@@ -969,15 +953,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get("/api/patients/:patientId/invoices", authenticate, async (req, res) => {
+  app.get("/api/patients/:patientId/invoices", async (req, res) => {
     try {
       const patientId = Number(req.params.patientId);
-      const { currentUser } = req.body;
-      
-      // Check if the user is the patient or a doctor
-      if (currentUser.id !== patientId && currentUser.role !== 'doctor') {
-        return res.status(403).json({ message: "Access denied" });
-      }
       
       const invoices = await storage.getInvoicesByPatient(patientId);
       
@@ -1031,7 +1009,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.post("/api/invoices", async (req, res) => {
     try {
-      const { currentUser, items, ...invoiceData } = req.body;
+      const { items, ...invoiceData } = req.body;
       
       // Validate input
       const validatedData = insertInvoiceSchema.parse(invoiceData);
