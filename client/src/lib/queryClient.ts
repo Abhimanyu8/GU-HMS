@@ -12,9 +12,25 @@ export async function apiRequest(
   url: string,
   data?: unknown | undefined,
 ): Promise<Response> {
+  // Get the authenticated user from localStorage
+  const userStr = localStorage.getItem('user');
+  const headers: Record<string, string> = data ? { "Content-Type": "application/json" } : {};
+  
+  // Add user-id header if user exists
+  if (userStr) {
+    try {
+      const user = JSON.parse(userStr);
+      if (user && user.id) {
+        headers['user-id'] = user.id.toString();
+      }
+    } catch (error) {
+      console.error('Failed to parse user from localStorage', error);
+    }
+  }
+
   const res = await fetch(url, {
     method,
-    headers: data ? { "Content-Type": "application/json" } : {},
+    headers,
     body: data ? JSON.stringify(data) : undefined,
     credentials: "include",
   });
@@ -29,7 +45,24 @@ export const getQueryFn: <T>(options: {
 }) => QueryFunction<T> =
   ({ on401: unauthorizedBehavior }) =>
   async ({ queryKey }) => {
+    // Get the authenticated user from localStorage
+    const userStr = localStorage.getItem('user');
+    const headers: Record<string, string> = {};
+    
+    // Add user-id header if user exists
+    if (userStr) {
+      try {
+        const user = JSON.parse(userStr);
+        if (user && user.id) {
+          headers['user-id'] = user.id.toString();
+        }
+      } catch (error) {
+        console.error('Failed to parse user from localStorage', error);
+      }
+    }
+
     const res = await fetch(queryKey[0] as string, {
+      headers,
       credentials: "include",
     });
 
