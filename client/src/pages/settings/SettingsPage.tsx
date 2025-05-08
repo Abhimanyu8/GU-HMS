@@ -98,9 +98,16 @@ export default function SettingsPage() {
   // Profile update mutation
   const profileMutation = useMutation({
     mutationFn: async (data: z.infer<typeof profileFormSchema>) => {
-      return apiRequest('PATCH', `/api/users/${user?.id}`, data);
+      const response = await apiRequest('PATCH', `/api/users/${user?.id}`, data);
+      return response.json();
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
+      // Update local storage and auth context
+      if (data.user) {
+        localStorage.setItem('user', JSON.stringify(data.user));
+        // Update auth context
+        setUser(data.user);
+      }
       queryClient.invalidateQueries({ queryKey: [`/api/users/${user?.id}`] });
       toast({
         title: t('settings.profileUpdated'),

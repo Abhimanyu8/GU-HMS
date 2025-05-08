@@ -16,6 +16,7 @@ type User = {
 
 type AuthContextType = {
   user: User | null;
+  setUser: (user: User | null) => void;
   isLoading: boolean;
   login: (username: string, password: string) => Promise<void>;
   register: (userData: any) => Promise<void>;
@@ -124,6 +125,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     <AuthContext.Provider
       value={{
         user,
+        setUser,
         isLoading,
         login,
         register,
