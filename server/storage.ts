@@ -133,12 +133,12 @@ export class MemStorage implements IStorage {
 
   private initializeData() {
     // Create doctors
-    const doctorAnup = this.createUser({
-      username: "dr.anup",
+    const doctorAvimanyu = this.createUser({
+      username: "dr.avimanyu",
       password: "password",
       role: "doctor",
-      email: "dr.anup@medicare.com",
-      fullName: "Dr. Anup Konwar",
+      email: "dr.avimanyu@medicare.com",
+      fullName: "Dr. Avimanyu Dutta",
       phone: "+91 555-123-4567",
       gender: "male",
       specialization: "Cardiologist",
@@ -158,7 +158,7 @@ export class MemStorage implements IStorage {
       languages: ["English", "Hindi", "Assamese", "Bengali"],
       profileImage: "/placeholder-doctor.png"
     });
-    
+
     const doctorSumit = this.createUser({
       username: "dr.sumit",
       password: "password",
@@ -186,7 +186,7 @@ export class MemStorage implements IStorage {
       address: "123 GS Road, Guwahati",
       profileImage: "/placeholder-patient.png"
     });
-    
+
     const patientAbhinandita = this.createUser({
       username: "patient2",
       password: "password",
@@ -200,7 +200,7 @@ export class MemStorage implements IStorage {
       address: "456 Zoo Road, Guwahati",
       profileImage: "/placeholder-patient.png"
     });
-    
+
     const patientDebojyoti = this.createUser({
       username: "patient3",
       password: "password",
@@ -226,7 +226,7 @@ export class MemStorage implements IStorage {
       height: "5'10\"",
       weight: "185 lbs"
     });
-    
+
     this.createPatientInfo({
       patientId: 3, // patientSmith
       allergies: ["Sulfa drugs"],
@@ -237,7 +237,7 @@ export class MemStorage implements IStorage {
       height: "5'6\"",
       weight: "135 lbs"
     });
-    
+
     this.createPatientInfo({
       patientId: 4, // patientGarcia
       allergies: ["Latex", "Shellfish"],
@@ -248,7 +248,7 @@ export class MemStorage implements IStorage {
       height: "5'8\"",
       weight: "175 lbs"
     });
-    
+
     this.createPatientInfo({
       patientId: 5, // patientWong
       allergies: [],
@@ -259,7 +259,7 @@ export class MemStorage implements IStorage {
       height: "5'4\"",
       weight: "128 lbs"
     });
-    
+
     this.createPatientInfo({
       patientId: 6, // patientJohnson
       allergies: ["Codeine"],
@@ -280,7 +280,7 @@ export class MemStorage implements IStorage {
       endTime: "17:00",
       isAvailable: true
     });
-    
+
     this.createDoctorSchedule({
       doctorId: 1,
       dayOfWeek: 3, // Wednesday
@@ -288,7 +288,7 @@ export class MemStorage implements IStorage {
       endTime: "17:00",
       isAvailable: true
     });
-    
+
     this.createDoctorSchedule({
       doctorId: 1,
       dayOfWeek: 5, // Friday
@@ -296,7 +296,7 @@ export class MemStorage implements IStorage {
       endTime: "13:00",
       isAvailable: true
     });
-    
+
     // Dr. Patel's Schedule (Neurologist)
     this.createDoctorSchedule({
       doctorId: 2,
@@ -305,7 +305,7 @@ export class MemStorage implements IStorage {
       endTime: "18:00",
       isAvailable: true
     });
-    
+
     this.createDoctorSchedule({
       doctorId: 2,
       dayOfWeek: 4, // Thursday
@@ -313,7 +313,7 @@ export class MemStorage implements IStorage {
       endTime: "18:00",
       isAvailable: true
     });
-    
+
     this.createDoctorSchedule({
       doctorId: 2,
       dayOfWeek: 6, // Saturday
@@ -321,7 +321,7 @@ export class MemStorage implements IStorage {
       endTime: "15:00",
       isAvailable: true
     });
-    
+
     // Dr. Williams's Schedule (Pediatrician)
     this.createDoctorSchedule({
       doctorId: 3,
@@ -330,7 +330,7 @@ export class MemStorage implements IStorage {
       endTime: "16:00",
       isAvailable: true
     });
-    
+
     this.createDoctorSchedule({
       doctorId: 3,
       dayOfWeek: 2, // Tuesday
@@ -338,7 +338,7 @@ export class MemStorage implements IStorage {
       endTime: "16:00",
       isAvailable: true
     });
-    
+
     this.createDoctorSchedule({
       doctorId: 3,
       dayOfWeek: 4, // Thursday
@@ -346,7 +346,7 @@ export class MemStorage implements IStorage {
       endTime: "16:00",
       isAvailable: true
     });
-    
+
     this.createDoctorSchedule({
       doctorId: 3,
       dayOfWeek: 5, // Friday
@@ -367,7 +367,7 @@ export class MemStorage implements IStorage {
       status: "completed",
       notes: "Patient reported occasional chest pain on exertion"
     });
-    
+
     const pastAppointment2 = this.createAppointment({
       patientId: 3, // Lisa Smith
       doctorId: 3, // Dr. Williams (Pediatrician)
@@ -378,7 +378,7 @@ export class MemStorage implements IStorage {
       status: "completed",
       notes: "Patient's asthma symptoms have improved with current medication"
     });
-    
+
     const pastAppointment3 = this.createAppointment({
       patientId: 4, // Miguel Garcia
       doctorId: 2, // Dr. Patel (Neurologist)
@@ -389,7 +389,7 @@ export class MemStorage implements IStorage {
       status: "completed",
       notes: "Patient has been experiencing severe migraines"
     });
-    
+
     const pastAppointment4 = this.createAppointment({
       patientId: 5, // Sophia Wong
       doctorId: 1, // Dr. Johnson (Cardiologist)
@@ -412,7 +412,7 @@ export class MemStorage implements IStorage {
       status: "pending",
       notes: ""
     });
-    
+
     const upcomingAppointment2 = this.createAppointment({
       patientId: 6, // David Johnson
       doctorId: 2, // Dr. Patel (Neurologist)
@@ -423,7 +423,7 @@ export class MemStorage implements IStorage {
       status: "pending",
       notes: ""
     });
-    
+
     const upcomingAppointment3 = this.createAppointment({
       patientId: 3, // Lisa Smith
       doctorId: 3, // Dr. Williams (Pediatrician)
@@ -434,7 +434,7 @@ export class MemStorage implements IStorage {
       status: "pending",
       notes: ""
     });
-    
+
     const cancelledAppointment = this.createAppointment({
       patientId: 4, // Miguel Garcia
       doctorId: 1, // Dr. Johnson (Cardiologist)
@@ -456,7 +456,7 @@ export class MemStorage implements IStorage {
       treatment: "Increased current medication dosage and recommended lifestyle modifications",
       notes: "Patient advised to follow a low-sodium diet and increase physical activity"
     });
-    
+
     const medicalRecord2 = this.createMedicalRecord({
       patientId: 3, // Lisa Smith
       appointmentId: 2, // pastAppointment2
@@ -466,7 +466,7 @@ export class MemStorage implements IStorage {
       treatment: "Continue current inhaler usage",
       notes: "Patient shows good response to current medication regimen"
     });
-    
+
     const medicalRecord3 = this.createMedicalRecord({
       patientId: 4, // Miguel Garcia
       appointmentId: 3, // pastAppointment3
@@ -476,7 +476,7 @@ export class MemStorage implements IStorage {
       treatment: "Prescribed pain relievers and muscle relaxants",
       notes: "Recommended stress management techniques and physical therapy"
     });
-    
+
     const medicalRecord4 = this.createMedicalRecord({
       patientId: 5, // Sophia Wong
       appointmentId: 4, // pastAppointment4
@@ -497,17 +497,17 @@ export class MemStorage implements IStorage {
       uploadDate: new Date("2023-04-15"),
       description: "ECG results showing mild irregularities"
     });
-    
+
     this.createMedicalFile({
       patientId: 2, // Robert Chen
       recordId: 1, // medicalRecord1
       fileType: "image",
       fileName: "Chest_Xray_Chen.jpg",
-      fileData: "data:image/jpeg;base64,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",
+      fileData: "data:image/jpeg;base64,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",
       uploadDate: new Date("2023-04-15"),
       description: "Chest X-ray showing normal cardiac size"
     });
-    
+
     this.createMedicalFile({
       patientId: 4, // Miguel Garcia
       recordId: 3, // medicalRecord3
@@ -517,7 +517,7 @@ export class MemStorage implements IStorage {
       uploadDate: new Date("2023-05-05"),
       description: "MRI of the brain showing no abnormalities"
     });
-    
+
     // Create prescriptions
     const prescription1 = this.createPrescription({
       patientId: 2, // Robert Chen
@@ -528,7 +528,7 @@ export class MemStorage implements IStorage {
       diagnosis: "Stage 1 Hypertension",
       notes: "Take medications as directed. Follow up in 3 months."
     });
-    
+
     const prescription2 = this.createPrescription({
       patientId: 3, // Lisa Smith
       doctorId: 3, // Dr. Williams (Pediatrician)
@@ -538,7 +538,7 @@ export class MemStorage implements IStorage {
       diagnosis: "Asthma",
       notes: "Use inhaler as needed for symptoms. Avoid triggers."
     });
-    
+
     const prescription3 = this.createPrescription({
       patientId: 4, // Miguel Garcia
       doctorId: 2, // Dr. Patel (Neurologist)
@@ -558,7 +558,7 @@ export class MemStorage implements IStorage {
       duration: "90 days",
       instructions: "Take in the morning with water"
     });
-    
+
     this.createPrescriptionItem({
       prescriptionId: 1, // prescription1
       medicationName: "Aspirin",
@@ -567,7 +567,7 @@ export class MemStorage implements IStorage {
       duration: "90 days",
       instructions: "Take with food"
     });
-    
+
     this.createPrescriptionItem({
       prescriptionId: 2, // prescription2
       medicationName: "Albuterol Sulfate",
@@ -576,7 +576,7 @@ export class MemStorage implements IStorage {
       duration: "As needed",
       instructions: "Inhale 2 puffs every 4-6 hours as needed for asthma symptoms"
     });
-    
+
     this.createPrescriptionItem({
       prescriptionId: 3, // prescription3
       medicationName: "Ibuprofen",
@@ -585,7 +585,7 @@ export class MemStorage implements IStorage {
       duration: "10 days",
       instructions: "Take with food for headache pain"
     });
-    
+
     this.createPrescriptionItem({
       prescriptionId: 3, // prescription3
       medicationName: "Cyclobenzaprine",
@@ -605,7 +605,7 @@ export class MemStorage implements IStorage {
       status: "paid",
       notes: "Cardiac consultation and tests"
     });
-    
+
     const invoice2 = this.createInvoice({
       patientId: 3, // Lisa Smith
       appointmentId: 2, // pastAppointment2
@@ -615,7 +615,7 @@ export class MemStorage implements IStorage {
       status: "paid",
       notes: "Pediatric follow-up visit"
     });
-    
+
     const invoice3 = this.createInvoice({
       patientId: 4, // Miguel Garcia
       appointmentId: 3, // pastAppointment3
@@ -625,7 +625,7 @@ export class MemStorage implements IStorage {
       status: "unpaid",
       notes: "Neurological consultation and tests"
     });
-    
+
     const invoice4 = this.createInvoice({
       patientId: 5, // Sophia Wong
       appointmentId: 4, // pastAppointment4
@@ -644,7 +644,7 @@ export class MemStorage implements IStorage {
       unitPrice: 10000, // $100.00
       totalPrice: 10000 // $100.00
     });
-    
+
     this.createInvoiceItem({
       invoiceId: 1, // invoice1
       description: "ECG",
@@ -652,7 +652,7 @@ export class MemStorage implements IStorage {
       unitPrice: 5000, // $50.00
       totalPrice: 5000 // $50.00
     });
-    
+
     this.createInvoiceItem({
       invoiceId: 2, // invoice2
       description: "Pediatric Follow-up",
@@ -660,7 +660,7 @@ export class MemStorage implements IStorage {
       unitPrice: 7500, // $75.00
       totalPrice: 7500 // $75.00
     });
-    
+
     this.createInvoiceItem({
       invoiceId: 3, // invoice3
       description: "Neurological Consultation",
@@ -668,7 +668,7 @@ export class MemStorage implements IStorage {
       unitPrice: 12500, // $125.00
       totalPrice: 12500 // $125.00
     });
-    
+
     this.createInvoiceItem({
       invoiceId: 3, // invoice3
       description: "MRI Brain Scan",
@@ -676,7 +676,7 @@ export class MemStorage implements IStorage {
       unitPrice: 7500, // $75.00
       totalPrice: 7500 // $75.00
     });
-    
+
     this.createInvoiceItem({
       invoiceId: 4, // invoice4
       description: "Cardiac Consultation",
@@ -739,7 +739,7 @@ export class MemStorage implements IStorage {
     const info = Array.from(this.patientInfo.values()).find(
       info => info.patientId === patientId
     );
-    
+
     if (!info) return undefined;
 
     const updatedInfo = { ...info, ...infoData };
