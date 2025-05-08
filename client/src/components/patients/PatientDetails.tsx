@@ -95,12 +95,37 @@ export default function PatientDetails({ patientId }: PatientDetailsProps) {
         {/* Patient Profile */}
         <div className="flex flex-col md:flex-row">
           <div className="md:w-1/3 mb-4 md:mb-0">
-            <Avatar className="h-40 w-40 rounded-full mx-auto mb-4">
-              <AvatarImage src={patient.profileImage || ''} alt={patient.fullName} />
-              <AvatarFallback className="text-xl">
-                {patient.fullName?.split(' ').map(n => n[0]).join('').toUpperCase()}
-              </AvatarFallback>
-            </Avatar>
+            <Dialog>
+              <DialogTrigger asChild>
+                <div className="relative cursor-pointer group">
+                  <Avatar className="h-40 w-40 rounded-full mx-auto mb-4">
+                    <AvatarImage src={patient.profileImage || ''} alt={patient.fullName} />
+                    <AvatarFallback className="text-xl">
+                      {patient.fullName?.split(' ').map(n => n[0]).join('').toUpperCase()}
+                    </AvatarFallback>
+                  </Avatar>
+                  <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                    <Pencil className="h-6 w-6 text-white" />
+                  </div>
+                </div>
+              </DialogTrigger>
+              <DialogContent className="max-w-3xl">
+                <DialogHeader>
+                  <DialogTitle>{t('patients.editDetails')}</DialogTitle>
+                </DialogHeader>
+                <EditPatientForm 
+                  patient={patient}
+                  onSubmit={async (data) => {
+                    await fetch(`/api/users/${patientId}`, {
+                      method: 'PATCH',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify(data)
+                    });
+                    window.location.reload();
+                  }}
+                />
+              </DialogContent>
+            </Dialog>
             
             <div className="text-center">
               <h3 className="font-heading font-medium text-xl">{patient.fullName}</h3>

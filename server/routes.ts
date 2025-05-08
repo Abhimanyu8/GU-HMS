@@ -173,7 +173,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
       
       // Don't allow changing role or username
-      const { role: _, username: __, password, ...updateData } = req.body;
+      const { role: _, username: __, password, profileImage, ...updateData } = req.body;
+      
+      // Handle profile image update if provided
+      if (profileImage) {
+        if (!profileImage.startsWith('data:image')) {
+          return res.status(400).json({ message: "Invalid image format" });
+        }
+        updateData.profileImage = profileImage;
+      }
       
       const updatedUser = await storage.updateUser(userId, updateData);
       
