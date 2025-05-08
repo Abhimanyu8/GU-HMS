@@ -133,114 +133,86 @@ export class MemStorage implements IStorage {
 
   private initializeData() {
     // Create doctors
-    const doctorJohnson = this.createUser({
-      username: "dr.johnson",
+    const doctorAnup = this.createUser({
+      username: "dr.anup",
       password: "password",
       role: "doctor",
-      email: "dr.johnson@medicare.com",
-      fullName: "Dr. Sarah Johnson",
-      phone: "+1 555-123-4567",
-      gender: "female",
+      email: "dr.anup@medicare.com",
+      fullName: "Dr. Anup Konwar",
+      phone: "+91 555-123-4567",
+      gender: "male",
       specialization: "Cardiologist",
-      languages: ["English", "Hindi"],
-      profileImage: "https://randomuser.me/api/portraits/women/22.jpg"
+      languages: ["English", "Hindi", "Assamese"],
+      profileImage: "/placeholder-doctor.png"
     });
 
-    const doctorPatel = this.createUser({
-      username: "dr.patel",
+    const doctorSanjana = this.createUser({
+      username: "dr.sanjana",
       password: "password",
       role: "doctor",
-      email: "dr.patel@medicare.com",
-      fullName: "Dr. Raj Patel",
-      phone: "+1 555-234-5678",
-      gender: "male",
+      email: "dr.sanjana@medicare.com",
+      fullName: "Dr. Sanjana Das",
+      phone: "+91 555-234-5678",
+      gender: "female",
       specialization: "Neurologist",
-      languages: ["English", "Hindi", "Assamese"],
-      profileImage: "https://randomuser.me/api/portraits/men/32.jpg"
+      languages: ["English", "Hindi", "Assamese", "Bengali"],
+      profileImage: "/placeholder-doctor.png"
     });
     
-    const doctorWilliams = this.createUser({
-      username: "dr.williams",
+    const doctorSumit = this.createUser({
+      username: "dr.sumit",
       password: "password",
       role: "doctor",
-      email: "dr.williams@medicare.com",
-      fullName: "Dr. Emily Williams",
-      phone: "+1 555-345-6789",
-      gender: "female",
+      email: "dr.sumit@medicare.com",
+      fullName: "Dr. Sumit Kumar",
+      phone: "+91 555-345-6789",
+      gender: "male",
       specialization: "Pediatrician",
-      languages: ["English"],
-      profileImage: "https://randomuser.me/api/portraits/women/45.jpg"
+      languages: ["English", "Hindi"],
+      profileImage: "/placeholder-doctor.png"
     });
 
     // Create patients
-    const patientChen = this.createUser({
+    const patientAvimanyu = this.createUser({
       username: "patient1",
       password: "password",
       role: "patient",
-      email: "robert.chen@example.com",
-      fullName: "Robert Chen",
-      phone: "+1 555-987-6543",
+      email: "avimanyu.dutta@example.com",
+      fullName: "Avimanyu Dutta",
+      phone: "+91 555-987-6543",
       gender: "male",
       dateOfBirth: new Date("1980-05-15"),
       bloodGroup: "O+",
-      address: "123 Main St, Anytown, USA",
-      profileImage: "https://randomuser.me/api/portraits/men/3.jpg"
+      address: "123 GS Road, Guwahati",
+      profileImage: "/placeholder-patient.png"
     });
     
-    const patientSmith = this.createUser({
+    const patientAbhinandita = this.createUser({
       username: "patient2",
       password: "password",
       role: "patient",
-      email: "lisa.smith@example.com",
-      fullName: "Lisa Smith",
-      phone: "+1 555-876-5432",
+      email: "abhinandita.kumar@example.com",
+      fullName: "Abhinandita Kumar",
+      phone: "+91 555-876-5432",
       gender: "female",
       dateOfBirth: new Date("1992-11-23"),
       bloodGroup: "A-",
-      address: "456 Elm St, Somewhere, USA",
-      profileImage: "https://randomuser.me/api/portraits/women/3.jpg"
+      address: "456 Zoo Road, Guwahati",
+      profileImage: "/placeholder-patient.png"
     });
     
-    const patientGarcia = this.createUser({
+    const patientDebojyoti = this.createUser({
       username: "patient3",
       password: "password",
       role: "patient",
-      email: "miguel.garcia@example.com",
-      fullName: "Miguel Garcia",
-      phone: "+1 555-765-4321",
+      email: "debojyoti.deb@example.com",
+      fullName: "Debojyoti Deb",
+      phone: "+91 555-765-4321",
       gender: "male",
       dateOfBirth: new Date("1975-08-07"),
       bloodGroup: "B+",
-      address: "789 Oak Dr, Elsewhere, USA",
-      profileImage: "https://randomuser.me/api/portraits/men/6.jpg"
-    });
-    
-    const patientWong = this.createUser({
-      username: "patient4",
-      password: "password",
-      role: "patient",
-      email: "sophia.wong@example.com",
-      fullName: "Sophia Wong",
-      phone: "+1 555-654-3210",
-      gender: "female",
-      dateOfBirth: new Date("1988-03-12"),
-      bloodGroup: "AB+",
-      address: "321 Pine St, Nowhere, USA",
-      profileImage: "https://randomuser.me/api/portraits/women/6.jpg"
-    });
-    
-    const patientJohnson = this.createUser({
-      username: "patient5",
-      password: "password",
-      role: "patient",
-      email: "david.johnson@example.com",
-      fullName: "David Johnson",
-      phone: "+1 555-543-2109",
-      gender: "male",
-      dateOfBirth: new Date("1965-12-30"),
-      bloodGroup: "O-",
-      address: "654 Maple Ave, Anywhere, USA",
-      profileImage: "https://randomuser.me/api/portraits/men/9.jpg"
+      address: "789 Maligaon, Guwahati",
+      profileImage: "/placeholder-patient.png"
     });
 
     // Add patient information
