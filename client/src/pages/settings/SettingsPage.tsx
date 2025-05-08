@@ -33,7 +33,7 @@ import { Switch } from '@/components/ui/switch';
 export default function SettingsPage() {
   const { t } = useTranslation();
   const { toast } = useToast();
-  const { user, logout } = useAuth();
+  const { user, setUser, logout } = useAuth();
   const { currentLanguage, changeLanguage, languages } = useLanguage();
   const [isUpdating, setIsUpdating] = useState(false);
 
