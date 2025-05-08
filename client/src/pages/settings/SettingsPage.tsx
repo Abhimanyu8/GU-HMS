@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Pencil } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import {
@@ -230,12 +231,58 @@ export default function SettingsPage() {
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="flex items-center space-x-4">
-                <Avatar className="h-16 w-16">
-                  <AvatarImage src={user?.profileImage} alt={user?.fullName} />
-                  <AvatarFallback className="text-lg">
-                    {user?.fullName?.split(' ').map(n => n[0]).join('').toUpperCase() || 'U'}
-                  </AvatarFallback>
-                </Avatar>
+                <div className="relative group">
+                  <Avatar className="h-16 w-16">
+                    <AvatarImage src={user?.profileImage} alt={user?.fullName} />
+                    <AvatarFallback className="text-lg">
+                      {user?.fullName?.split(' ').map(n => n[0]).join('').toUpperCase() || 'U'}
+                    </AvatarFallback>
+                  </Avatar>
+                  <label className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-full opacity-0 group-hover:opacity-100 cursor-pointer">
+                    <input 
+                      type="file" 
+                      className="hidden" 
+                      accept="image/*"
+                      onChange={async (e) => {
+                        const file = e.target.files?.[0];
+                        if (file) {
+                          // Convert to base64
+                          const reader = new FileReader();
+                          reader.onload = async (event) => {
+                            const base64String = event.target?.result as string;
+                            
+                            // Create a temporary image to get dimensions
+                            const img = new Image();
+                            img.src = base64String;
+                            await new Promise(resolve => img.onload = resolve);
+                            
+                            // Create canvas for resizing
+                            const canvas = document.createElement('canvas');
+                            const ctx = canvas.getContext('2d');
+                            
+                            // Set dimensions (max 256x256)
+                            const maxSize = 256;
+                            const ratio = Math.min(maxSize / img.width, maxSize / img.height);
+                            canvas.width = img.width * ratio;
+                            canvas.height = img.height * ratio;
+                            
+                            // Draw and compress image
+                            ctx?.drawImage(img, 0, 0, canvas.width, canvas.height);
+                            const compressedBase64 = canvas.toDataURL('image/jpeg', 0.8);
+                            
+                            // Update profile with new image
+                            profileMutation.mutate({
+                              ...profileForm.getValues(),
+                              profileImage: compressedBase64
+                            });
+                          };
+                          reader.readAsDataURL(file);
+                        }
+                      }}
+                    />
+                    <Pencil className="h-4 w-4 text-white" />
+                  </label>
+                </div>
                 <div>
                   <h3 className="text-lg font-medium">{user?.fullName}</h3>
                   <p className="text-sm text-neutral-500">{user?.role}</p>
