@@ -23,9 +23,9 @@ The Gauhati University Hospital Management System is a comprehensive web applica
 ### Backend
 
 - **Express.js**: A minimal and flexible Node.js web application framework
-- **Drizzle ORM**: A lightweight and type-safe SQL ORM for TypeScript
+- **Drizzle ORM**: A lightweight and type-safe SQL ORM for TypeScript with PostgreSQL support
 - **Zod Validation**: Server-side schema validation
-- **In-Memory Storage**: Custom implementation for rapid prototyping
+- **PostgreSQL**: Database with in-memory fallback for development
 
 ### Development Tools
 

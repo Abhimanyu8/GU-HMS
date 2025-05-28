@@ -29,12 +29,12 @@ GU Hospital HMS is a comprehensive hospital management system designed for Gauha
 ## Technology Stack
 
 - **Frontend**: React, TypeScript, TailwindCSS, Shadcn UI
-- **Backend**: Node.js, Express
+- **Backend**: Node.js, Express, Drizzle ORM, PostgreSQL
 - **State Management**: React Query, Context API
 - **Routing**: Wouter
 - **Forms**: React Hook Form, Zod validation
 - **Internationalization**: i18next
-- **Data Storage**: In-memory storage (development), PostgreSQL (optional)
+- **Data Storage**: In-memory storage with Drizzle ORM setup for PostgreSQL
 - **Build Tools**: Vite
 
 ## Project Structure
@@ -69,11 +69,15 @@ GU Hospital HMS is a comprehensive hospital management system designed for Gauha
 │   ├── index.ts                # Server entry point
 │   ├── routes.ts               # API route definitions
 │   ├── storage.ts              # Data storage interface
+│   ├── db.ts                   # Database configuration
 │   └── vite.ts                 # Vite server setup
 ├── shared/                     # Shared code
 │   └── schema.ts               # Database schema and types
 ├── components.json             # Shadcn UI components config
+├── drizzle.config.ts           # Drizzle ORM configuration
 ├── package.json                # Project dependencies
+├── postcss.config.js           # PostCSS configuration
+├── tailwind.config.ts          # Tailwind CSS configuration
 ├── tsconfig.json               # TypeScript configuration
 └── vite.config.ts              # Vite configuration
 ```
