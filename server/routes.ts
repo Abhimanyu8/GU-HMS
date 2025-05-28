@@ -1243,8 +1243,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
             <tr>
                 <td>${item.description}</td>
                 <td class="text-right">${item.quantity}</td>
-                <td class="text-right">₹${(item.unitPrice / 100).toFixed(2)}</td>
-                <td class="text-right">₹${(item.totalPrice / 100).toFixed(2)}</td>
+                <td class="text-right">₹${Math.floor(item.unitPrice)}</td>
+                <td class="text-right">₹${Math.floor(item.totalPrice)}</td>
             </tr>
             `).join('') : `
             <tr>
@@ -1257,11 +1257,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
     <div class="total-section">
         <div class="total-row">
             <span>Subtotal:</span>
-            <span>₹${(invoice.totalAmount / 100).toFixed(2)}</span>
+            <span>₹${Math.floor(invoice.totalAmount)}</span>
         </div>
         <div class="total-row total-final">
             <span>Total Amount:</span>
-            <span>₹${(invoice.totalAmount / 100).toFixed(2)}</span>
+            <span>₹${Math.floor(invoice.totalAmount)}</span>
         </div>
     </div>
 
