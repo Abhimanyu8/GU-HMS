@@ -61,7 +61,12 @@ export default function PrescriptionDetails({ prescriptionId, onClose }: Prescri
               <div className="flex items-center text-sm">
                 <Calendar className="h-4 w-4 mr-2 text-neutral-500" />
                 <span className="font-medium mr-2">{t('prescriptions.prescriptionDate')}:</span>
-                <span>{format(new Date(prescription.prescriptionDate), 'PPP')}</span>
+                <span>
+                  {prescription.prescriptionDate ? 
+                    format(new Date(prescription.prescriptionDate), 'PPP') : 
+                    'N/A'
+                  }
+                </span>
               </div>
               <div className="flex items-center text-sm">
                 <User className="h-4 w-4 mr-2 text-neutral-500" />
@@ -79,7 +84,12 @@ export default function PrescriptionDetails({ prescriptionId, onClose }: Prescri
                 <div className="flex items-center text-sm">
                   <Calendar className="h-4 w-4 mr-2 text-neutral-500" />
                   <span className="font-medium mr-2">{t('prescriptions.expiryDate')}:</span>
-                  <span>{format(new Date(prescription.expiryDate), 'PPP')}</span>
+                  <span>
+                    {prescription.expiryDate ? 
+                      format(new Date(prescription.expiryDate), 'PPP') : 
+                      'N/A'
+                    }
+                  </span>
                 </div>
               )}
               <div className="flex items-center text-sm">

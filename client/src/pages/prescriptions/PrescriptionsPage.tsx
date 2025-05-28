@@ -148,7 +148,9 @@ export default function PrescriptionsPage({ prescriptionId }: PrescriptionsPageP
                       </TableCell>
                       <TableCell>
                         {isDoctor ? (
-                          format(new Date(prescription.prescriptionDate), "PP")
+                          prescription.prescriptionDate ? 
+                            format(new Date(prescription.prescriptionDate), "PP") : 
+                            "N/A"
                         ) : (
                           <div className="flex items-center">
                             <Avatar className="h-6 w-6 mr-2">

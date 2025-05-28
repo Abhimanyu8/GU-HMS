@@ -312,7 +312,10 @@ export default function PatientDetails({ patientId }: PatientDetailsProps) {
                       {prescriptions.map((prescription) => (
                         <tr key={prescription.id} className="border-b border-neutral-200">
                           <td className="py-3 px-4 text-sm">
-                            {format(new Date(prescription.prescriptionDate), 'MMM d, yyyy')}
+                            {prescription.prescriptionDate ? 
+                              format(new Date(prescription.prescriptionDate), 'MMM d, yyyy') : 
+                              'N/A'
+                            }
                           </td>
                           <td className="py-3 px-4 text-sm">
                             {prescription.doctor?.fullName || 'N/A'}
