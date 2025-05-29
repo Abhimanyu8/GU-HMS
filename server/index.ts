@@ -1,10 +1,20 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import mongoose from "mongoose";
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// MongoDB Connection
+const mongoUri = process.env.MONGO_URI || "mongodb://localhost:27017/your_database_name"; // Replace with your MongoDB URI
+mongoose.connect(mongoUri)
+  .then(() => console.log("Connected to MongoDB"))
+  .catch(err => {
+    console.error("MongoDB connection error:", err);
+    process.exit(1); // Exit process on connection failure
+  });
 
 app.use((req, res, next) => {
   const start = Date.now();

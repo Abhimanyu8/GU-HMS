@@ -14,7 +14,7 @@ localPort = 5000
 externalPort = 80
 
 [workflows]
-runButton = "Start application"
+runButton = "Start with MongoDB"
 
 [[workflows.workflow]]
 name = "Project"
@@ -33,3 +33,20 @@ author = "agent"
 task = "shell.exec"
 args = "npm run dev"
 waitForPort = 5000
+
+[[workflows.workflow]]
+name = "Start with MongoDB"
+author = 42363938
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "./start-mongo.sh"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "sleep 3"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run dev"
