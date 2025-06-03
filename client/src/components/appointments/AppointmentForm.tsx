@@ -42,6 +42,7 @@ export default function AppointmentForm({ patientId, doctorId, appointmentId, on
   // Fetch doctors
   const { data: doctorsData, isLoading: isLoadingDoctors } = useQuery<{ users: any[] }>({
     queryKey: ['/api/users', { role: 'doctor' }],
+    enabled: !doctorId || user?.role === UserRole.PATIENT,
   });
 
   // Fetch patients (only for doctors)
@@ -206,8 +207,8 @@ export default function AppointmentForm({ patientId, doctorId, appointmentId, on
           />
         )}
 
-        {/* Doctor field - only shown to patients */}
-        {user?.role === UserRole.PATIENT && (
+        {/* Doctor field - shown when doctor is not pre-selected or user is patient */}
+        {(!doctorId || user?.role === UserRole.PATIENT) && (
           <FormField
             control={form.control}
             name="doctorId"
